@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="customUserAudit">
+
+    <select id="userAuditSelect" resultMap="userAuditResultMap" parameterType="java.lang.String">
+        <include refid="userAuditSql"/>
+    </select>
+
+    <resultMap id="userAuditResultMap" type="com.gsg.demo.dto.UserAuditDto">
+        <result property="userId" column="user_id_" jdbcType="VARCHAR"/>
+        <result property="operationType" column="operation_type_" jdbcType="VARCHAR"/>
+        <result property="entityType" column="entity_type_" jdbcType="VARCHAR"/>
+        <result property="property" column="property_" jdbcType="VARCHAR"/>
+        <result property="originalValue" column="org_value_" jdbcType="VARCHAR"/>
+        <result property="newValue" column="new_value_" jdbcType="VARCHAR"/>
+        <result property="processDefinitionKey" column="proc_def_key_" jdbcType="VARCHAR"/>
+        <result property="processInstanceId" column="proc_inst_id_" jdbcType="VARCHAR"/>
+        <result property="taskId" column="task_id_" jdbcType="VARCHAR"/>
+        <result property="timestamp" column="timestamp_" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="userAuditSql">
+        select * from act_hi_op_log where user_id_ = #{userName, jdbcType=VARCHAR};
+    </sql>
+
+</mapper>

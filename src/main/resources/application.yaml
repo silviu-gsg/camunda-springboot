@@ -1,3 +1,15 @@
 camunda.bpm.admin-user:
   id: kermit
   password: kermit
+spring:
+  mail:
+    host: ${MAIL_SENDER_HOST:mail_sender_address@gmail.com}
+    port: ${MAIL_SENDER_PORT:465}
+    username: ${MAIL_SENDER_USERNAME:mail_sender_address@gmail.com}
+    password: ${MAIL_SENDER_PASSWORD:mail_sender_password}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true

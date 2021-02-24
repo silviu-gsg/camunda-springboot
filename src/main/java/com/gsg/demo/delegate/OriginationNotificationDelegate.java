@@ -1,18 +1,24 @@
 package com.gsg.demo.delegate;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.mail.DefaultAuthenticator;
-import org.apache.commons.mail.Email;
-import org.apache.commons.mail.SimpleEmail;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Component;
 
-import static com.gsg.demo.util.EmailServiceProperties.*;
-import static com.gsg.demo.util.EmailContentConstants.*;
-import static com.gsg.demo.util.OriginationActivityConstants.*;
+import java.util.Date;
+
+import static com.gsg.demo.util.EmailNotificationConstants.*;
+import static com.gsg.demo.util.OriginationProcessConstants.*;
 
 @Slf4j
+@Component
 public class OriginationNotificationDelegate implements JavaDelegate {
+
+    @Autowired
+    private JavaMailSender emailSender;
 
     @Override
     public void execute(DelegateExecution execution) throws Exception {
@@ -26,17 +32,17 @@ public class OriginationNotificationDelegate implements JavaDelegate {
         String mailBody;
 
         switch (currentActivityId) {
-            case DENY_TERMS_AND_CONDITIONS:
+            case DENY_TERMS_TASK_ID:
                 recipientEmailAddress = SERVICE_DESK_ADDRESS;
                 mailSubject = String.format(DENY_TERMS_SUBJECT, processInstanceId);
                 mailBody = String.format(DENY_TERMS_BODY, processInstanceId, customerEmailAddress, customerPhoneNumber);
                 break;
-            case VALIDATION_ERROR_NOTIFICATION:
+            case VALIDATION_ERROR_TASK_ID:
                 recipientEmailAddress = SERVICE_DESK_ADDRESS;
                 mailSubject = String.format(VALIDATION_ERROR_SUBJECT, processInstanceId);
                 mailBody = String.format(VALIDATION_ERROR_BODY, processInstanceId, customerPhoneNumber);
                 break;
-            case WELCOME_ABOARD_NOTIFICATION:
+            case WELCOME_ABOARD_TASK_ID:
                 recipientEmailAddress = customerEmailAddress;
                 mailSubject = WELCOME_ABOARD_SUBJECT;
                 mailBody = WELCOME_ABOARD_BODY;
@@ -47,27 +53,18 @@ public class OriginationNotificationDelegate implements JavaDelegate {
                 throw new RuntimeException("Invalid service task configuration");
         }
 
-        Email email = new SimpleEmail();
-        email.setHostName(HOST);
-        email.setSmtpPort(PORT);
-        email.setAuthenticator(new DefaultAuthenticator(USERNAME, PASSWORD));
-        email.setSSLCheckServerIdentity(true);
-        email.setSSLOnConnect(true);
-
         try {
+            SimpleMailMessage email = new SimpleMailMessage();
             email.setFrom(DEFAULT_FROM_ADDRESS);
-
-            email.addTo(recipientEmailAddress);
+            email.setTo(recipientEmailAddress);
             email.setSubject(mailSubject);
-            email.setMsg(mailBody);
+            email.setText(mailBody);
+            email.setSentDate(new Date());
+            emailSender.send(email);
 
-            email.send();
-
-            log.info(String.format("Email sent successfully to: %s for process with id: %s",
-                    recipientEmailAddress, processInstanceId));
+            log.info(String.format("Email sent successfully to: %s for process with id: %s", recipientEmailAddress, processInstanceId));
         } catch (Exception e) {
-            log.warn(String.format("Error encountered while sending email notification for process with id: %s",
-                    processInstanceId), e);
+            log.warn(String.format("Error encountered while sending email notification for process with id: %s", processInstanceId), e);
         }
     }
 

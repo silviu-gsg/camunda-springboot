@@ -1,9 +1,12 @@
 package com.gsg.demo.util;
 
-public final class EmailContentConstants {
+public final class EmailNotificationConstants {
 
-    private EmailContentConstants() {
+    private EmailNotificationConstants() {
     }
+
+    public static final String DEFAULT_FROM_ADDRESS = "noreply_camunda_origination@gmail.com";
+    public static final String SERVICE_DESK_ADDRESS = "service_desk_camunda_origination@gmail.com";
 
     // TODO replace with Thymeleaf templates with HTML content
     public static final String DENY_TERMS_SUBJECT = "Terms and conditions denied by the customer for process with id: %s";

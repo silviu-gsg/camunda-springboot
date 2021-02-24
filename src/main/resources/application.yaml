@@ -1,6 +1,3 @@
-logging:
-  level:
-    root: INFO
 camunda.bpm.admin-user:
   id: kermit
   password: kermit

@@ -22,6 +22,11 @@ dependencies {
     implementation 'org.camunda.bpm:camunda-engine-plugin-spin:7.14.0'
     implementation 'org.camunda.spin:camunda-spin-dataformat-all:1.10.0'
 
+    implementation 'org.apache.commons:commons-email:1.5'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }

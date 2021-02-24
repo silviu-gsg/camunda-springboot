@@ -25,13 +25,13 @@ public class OriginationNotificationDelegate implements JavaDelegate {
         String customerEmailAddress = execution.getVariable("emailAddress").toString();
         String customerPhoneNumber = execution.getVariable("phoneNumber").toString();
         String processInstanceId = execution.getProcessInstanceId();
-        String currentActivityId = execution.getCurrentActivityId();
+        String currentTaskId = execution.getCurrentActivityId();
 
         String recipientEmailAddress;
         String mailSubject;
         String mailBody;
 
-        switch (currentActivityId) {
+        switch (currentTaskId) {
             case DENY_TERMS_TASK_ID:
                 recipientEmailAddress = SERVICE_DESK_ADDRESS;
                 mailSubject = String.format(DENY_TERMS_SUBJECT, processInstanceId);

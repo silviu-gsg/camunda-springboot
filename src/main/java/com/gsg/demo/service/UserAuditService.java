@@ -15,6 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserAuditService {
 
+    @SuppressWarnings(value = "unchecked")
     public List<UserAuditDto> getUserAuditByUserName(String userName) {
         return (List<UserAuditDto>) getUserAuditWithQuery("userAuditSelect", userName);
     }

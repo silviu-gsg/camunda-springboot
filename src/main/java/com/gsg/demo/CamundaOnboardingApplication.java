@@ -7,10 +7,10 @@ import javax.annotation.PostConstruct;
 import java.util.TimeZone;
 
 @SpringBootApplication
-public class CamundaOriginationApplication {
+public class CamundaOnboardingApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CamundaOriginationApplication.class, args);
+        SpringApplication.run(CamundaOnboardingApplication.class, args);
     }
 
     @PostConstruct

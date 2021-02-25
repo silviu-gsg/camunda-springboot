@@ -21,7 +21,7 @@ public class WorkflowTest extends AbstractProcessEngineRuleTest {
     @Test
     public void shouldExecuteHappyPath() {
         // given
-        String processDefinitionKey = "origination-process";
+        String processDefinitionKey = "onboarding-process";
 
         // when
         ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(processDefinitionKey);

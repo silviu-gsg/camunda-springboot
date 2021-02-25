@@ -11,11 +11,11 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 import static com.gsg.demo.util.EmailNotificationConstants.*;
-import static com.gsg.demo.util.OriginationProcessConstants.*;
+import static com.gsg.demo.util.OnboardingProcessConstants.*;
 
 @Slf4j
 @Component
-public class OriginationNotificationDelegate implements JavaDelegate {
+public class OnboardingNotificationDelegate implements JavaDelegate {
 
     @Autowired
     private JavaMailSender emailSender;

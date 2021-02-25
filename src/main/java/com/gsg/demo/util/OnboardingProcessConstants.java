@@ -1,8 +1,8 @@
 package com.gsg.demo.util;
 
-public final class OriginationProcessConstants {
+public final class OnboardingProcessConstants {
 
-    private OriginationProcessConstants() {
+    private OnboardingProcessConstants() {
     }
 
     public static final String DENY_TERMS_TASK_ID = "deny_terms_and_conditions";

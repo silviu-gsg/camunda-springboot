@@ -1,9 +1,20 @@
 # Camunda Onboarding
 
-## Description
+## Table of Contents
+1. [General Info](#general-info)
+2. [Technologies](#technologies)
+3. [Building the application](#building-the-application)
+4. [Running the application](#running-the-application)
+5. [Notes](#notes)
+
+### General Info
 Camunda Onboarding is a demo project which uses the Camunda BPM Engine to implement a generic onboarding process which aids users in creating their account remotely on a given platform
 
-## Building and running the application
+### Technologies
+The following main technologies were used:
+* [Camunda BPM](https://docs.camunda.org/manual/7.14/): Version 7.14 
+* [Spring Boot](https://docs.spring.io/spring-boot/docs/2.3.1.RELEASE/reference/htmlsingle/): Version 2.3.1.RELEASE
+* [MyBatis](https://mybatis.org/mybatis-3/): Version 3.5.3
 
 ### Building the application
 
@@ -36,7 +47,7 @@ Username: kermit
 Password: kermit 
 ```
 
-## Notes
+### Notes
 
 You can explore the modeled BPM process with any BPM viewer, even with the Camunda Modeler.
 Just open the process configuration found here:

@@ -49,12 +49,14 @@ Password: kermit
 
 ### Notes
 
-You can explore the modeled BPM process with any BPM viewer, even with the Camunda Modeler.
+* You can explore the modeled BPM process with any BPM viewer, even with the Camunda Modeler.
 Just open the process configuration found here:
-```
-src/main/resources/onboarding-process.bpmn
-```
-Alternatively, you can view the process directly in the Camunda UI by accessing:
-````
-Login -> Cockpit -> Process definitions -> onboarding-process
-````
+    ```
+    src/main/resources/onboarding-process.bpmn
+    ```
+    Alternatively, you can view the process directly in the Camunda UI by accessing:
+    ````
+    Login -> Cockpit -> Process definitions -> onboarding-process
+    ````
+* MyBatis is used for the sample custom REST API that can return data aggregations which may not be  available through the standard Camunda REST API.
+This persistence framework is also used by Camunda internally and is the preferred way of aggregating persisted data via SQL queries.

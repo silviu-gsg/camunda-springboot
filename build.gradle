@@ -24,7 +24,7 @@ dependencies {
     implementation 'org.camunda.bpm:camunda-engine-plugin-spin:7.14.0'
     implementation 'org.camunda.spin:camunda-spin-dataformat-all:1.10.0'
 
-    compileOnly 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok:1.18.18'
     annotationProcessor 'org.projectlombok:lombok'
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {

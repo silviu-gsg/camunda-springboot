@@ -3,9 +3,8 @@
 ## Table of Contents
 1. [General Info](#general-info)
 2. [Technologies](#technologies)
-3. [Building the application](#building-the-application)
-4. [Running the application](#running-the-application)
-5. [Notes](#notes)
+3. [Building the application](#building-and-running-the-application)
+4. [Notes](#notes)
 
 ### General Info
 Camunda Onboarding is a demo project which uses the Camunda BPM Engine to implement a generic onboarding process which aids users in creating their account remotely on a given platform
@@ -16,27 +15,20 @@ The following main technologies were used:
 * [Spring Boot](https://docs.spring.io/spring-boot/docs/2.3.1.RELEASE/reference/htmlsingle/): Version 2.3.1.RELEASE
 * [MyBatis](https://mybatis.org/mybatis-3/): Version 3.5.3
 
-### Building the application
+### Building and running the application
 
 The project uses [Gradle](https://gradle.org) as a build tool. It already contains
 `./gradlew` wrapper script, so there's no need to install gradle.
 
-To build the project execute the following command:
+To build and run the project just execute the following command:
 
 ```bash
-  ./gradlew build
+  ./gradlew bootRun
 ```
 
-### Running the application
-
-Just run the jar using:
-
-```bash
-java -jar .\build\libs\camunda-onboarding-0.0.1-SNAPSHOT.jar
-```
 It will start the Camunda Engine and use the embedded in-memory H2 database.
 
-After the server is running, go to:
+After the server is up and running, go to:
 
 ```
 http://localhost:8080/camunda/app/

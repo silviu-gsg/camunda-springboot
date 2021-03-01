@@ -3,7 +3,7 @@
 ## Table of Contents
 1. [General Info](#general-info)
 2. [Technologies](#technologies)
-3. [Building the application](#building-and-running-the-application)
+3. [Building and running the application](#building-and-running-the-application)
 4. [Notes](#notes)
 
 ### General Info
